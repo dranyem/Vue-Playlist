@@ -1,16 +1,16 @@
 <template>
-    <div class="song">
+    <div class="play-song">
         <h3>{{title}}</h3>
         <p>Song Artist : {{artist}}</p>
         <i>Song Duration : {{duration}}</i>
         <br>
-        <button @click="addSong">Add To PlayList</button>
+        <button @click="remove">Remove</button>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Song",
+    name: "PlaySong",
     props: {
         title: {
             type: String,
@@ -25,17 +25,16 @@ export default {
             require: true,
         },
     },
-    methods:{
-        addSong: function(){
-            console.log(' add button is clicked');
-            this.$emit("addSongToPlaylist",{title: this.title, artist: this.artist, duration: this.duration});
-        },
+    methods: {
+        remove(){
+            this.$emit("removeSong",{title: this.title, artist: this.artist, duration: this.duration});
+        }
     }
 }
 </script>
 
 <style scoped>
-    .song{
+    .play-song{
         display: inline-block;
         border: 1px solid black;
         padding: 10px;

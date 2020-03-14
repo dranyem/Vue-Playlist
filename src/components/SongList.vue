@@ -6,7 +6,8 @@
              :key="song"
              :title="song.title"
              :artist="song.artist"
-             :duration="song.duration" />
+             :duration="song.duration"
+             @addSongToPlaylist="addSong" />
         </div>
     </div>
 </template>
@@ -22,6 +23,12 @@ export default {
     components: {
         Song,
     },
+    methods: {
+        addSong: function(song){
+            console.log(song);
+            this.$emit("addSongPlayList", song);
+        },
+    }
     
 }
 </script>

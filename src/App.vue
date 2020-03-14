@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <SongList :songlist="listOfSongs" />
-    <PlayList />
+    <SongList :songlist="listOfSongs"
+              @addSongPlayList="addToPlaylist" />
+    <PlayList :playSongList="listOfPlaySongs"/>
   </div>
 </template>
 
@@ -68,7 +69,21 @@ export default {
                     duration: "3:51",
                 },
             ],
+            listOfPlaySongs: [
+
+            ],
         }
+    },
+    methods: {
+      addToPlaylist: function(song){
+        for(var i=0; i<this.listOfSongs.length; i++){
+          if(song.title == this.listOfSongs[i].title){
+            this.listOfPlaySongs.push(this.listOfSongs[i]);
+            this.listOfSongs.splice(i,1);
+            break;
+          }
+        }
+      }
     }   
 };
 </script>
@@ -80,6 +95,7 @@ export default {
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
+  place-items: center;
   width: 100%;
   height: 95vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
