@@ -2,7 +2,8 @@
   <div id="app">
     <SongList :songlist="listOfSongs"
               @addSongPlayList="addToPlaylist" />
-    <PlayList :playSongList="listOfPlaySongs"/>
+    <PlayList :playSongList="listOfPlaySongs"
+              @removeSongFromPlaylist="removeSong"/>
   </div>
 </template>
 
@@ -80,6 +81,15 @@ export default {
           if(song.title == this.listOfSongs[i].title){
             this.listOfPlaySongs.push(this.listOfSongs[i]);
             this.listOfSongs.splice(i,1);
+            break;
+          }
+        }
+      },
+      removeSong(song){
+        for(var i=0; i<this.listOfPlaySongs.length; i++){
+          if(song.title == this.listOfPlaySongs[i].title){
+            this.listOfSongs.push(this.listOfPlaySongs[i]);
+            this.listOfPlaySongs.splice(i,1);
             break;
           }
         }

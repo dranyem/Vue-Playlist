@@ -6,7 +6,8 @@
              :key="playSong"
              :title="playSong.title"
              :artist="playSong.artist"
-             :duration="playSong.duration" />
+             :duration="playSong.duration"
+             @removeSong="removeSongPlaylist" />
         </div>
     </div>
 </template>
@@ -20,6 +21,11 @@ export default {
     },
     props: {
         playSongList: Array,
+    },
+    methods:{
+        removeSongPlaylist(song){
+            this.$emit("removeSongFromPlaylist",song);
+        }
     }
 }
 </script>
