@@ -1,8 +1,8 @@
 <template>
     <div class="song">
-        <h1>{{title}}</h1>
-        <p>{{artist}}</p>
-        <i>{{duration}}</i>
+        <h3>{{title}}</h3>
+        <p>Song Artist : {{artist}}</p>
+        <i>Song Duration : {{duration}}</i>
         <br>
         <button>Add To PlayList</button>
     </div>
@@ -30,11 +30,11 @@ export default {
 
 <style scoped>
     .song{
-        display: block;
+        display: inline-block;
         border: 1px solid black;
-        padding: 20px;
-        margin: 20px;
-        box-shadow: 10px 10px grey;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 5px 5px grey;
     }
     button{
         margin: 20px;
